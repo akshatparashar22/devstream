@@ -5,8 +5,8 @@ import { geistMono, geistSans } from "./ui/fonts";
 
 
 export const metadata: Metadata = {
-  title: "Timeline Portfolio",
-  description: "Upload your resume | Get Timelined Portfolio",
+  title: "DevStream",
+  description: "Your own Timelined Portfolio",
 };
 
 export default function RootLayout({

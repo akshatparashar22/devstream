@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { ArrowUpTrayIcon, ArrowUpOnSquareStackIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { sourceCodePro } from "./ui/fonts";
 
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -31,7 +32,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-
+      <h1
+        className={`row-start-1 text-2xl sm:text-3xl font-bold text-center font-[var(--font-geist-mono)] ${sourceCodePro.className}`}
+      >
+        DevStream
+      </h1>
       <main className="row-start-2 flex flex-col gap-10 items-center sm:items-start w-full max-w-xl">
 
         {/* Drop Catcher */}
