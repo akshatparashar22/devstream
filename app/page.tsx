@@ -4,17 +4,25 @@ import { useRef, useState } from "react";
 import { ArrowUpTrayIcon, ArrowUpOnSquareStackIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { sourceCodePro } from "./ui/fonts";
+import { chatWithClaude } from "./lib/claudeChat";
 
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
 
-  const handleFile = (file: File) => {
-    // Add validation here if needed (e.g., only PDF/DOCX)
+  const handleFile = async (file: File) => {
     setUploadedFile(file);
-    console.log("Uploaded file:", file.name);
+
+    try {
+      const response = await chatWithClaude(file);
+      console.log("Parsed response from Claude:", response);
+    } catch (err) {
+      console.error("Error during Claude processing", err);
+    }
   };
+
+
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
