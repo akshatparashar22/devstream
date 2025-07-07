@@ -52,8 +52,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/devchronicle-frontend.git
-cd devchronicle-frontend
+git clone https://github.com/akshatparashar22/devstream.git
+cd devstream
 ```
 
 ---
