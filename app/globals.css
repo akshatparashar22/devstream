@@ -123,6 +123,26 @@ html {
   animation: spin 1s linear infinite;
 }
 
+/* Visible spinner styles */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--muted);
+  border-top: 2px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Alternative spinner with dots */
+.spinner-dots {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: conic-gradient(var(--primary) 0deg, var(--muted) 90deg, var(--primary) 180deg, var(--muted) 270deg);
+  animation: spin 1s linear infinite;
+}
+
 /* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { ArrowUpTrayIcon, ArrowUpOnSquareStackIcon, CheckCircleIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
+import { Loader2 } from "lucide-react"; // Import Loader2 from lucide-react
 import Image from "next/image";
 import { sourceCodePro } from "./ui/fonts";
 import { chatWithClaude } from "./lib/claudeChat";
@@ -235,7 +236,6 @@ export default function Home() {
           </p>
         </div>
 
-
         {/* Main Content */}
         <div className="space-y-8">
           {!processingState.isComplete && (
@@ -329,13 +329,12 @@ export default function Home() {
                 >
                   {processingState.isProcessing ? (
                     <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+                      <Loader2 className="h-5 w-5 animate-spin" />
                       <span>Processing...</span>
                     </>
                   ) : (
                     <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
-                      {/* <ArrowUpOnSquareStackIcon className="h-5 w-5" /> */}
+                      <ArrowUpOnSquareStackIcon className="h-5 w-5" />
                       <span>Generate Timeline</span>
                     </>
                   )}
