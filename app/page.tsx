@@ -6,6 +6,7 @@ import Image from "next/image";
 import { sourceCodePro } from "./ui/fonts";
 import { chatWithClaude } from "./lib/claudeChat";
 import { Timeline } from "./ui/components/Timeline";
+import ThemeSwitcher from "./ui/components/ThemeSwitcher";
 
 interface TimelineItem {
   title: string;
@@ -127,9 +128,9 @@ export default function Home() {
                     )}
                   </div>
                   <span className={`px-2 py-1 text-xs font-semibold rounded-full ${item.type === 'work' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                      item.type === 'education' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
-                        item.type === 'certification' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
-                          'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
+                    item.type === 'education' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                      item.type === 'certification' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
+                        'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
                     }`}>
                     {item.type || 'experience'}
                   </span>
@@ -222,7 +223,10 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 relative">
+          <div className="absolute top-0 right-0">
+            <ThemeSwitcher />
+          </div>
           <h1 className={`text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ${sourceCodePro.className}`}>
             DevStream
           </h1>
@@ -230,6 +234,7 @@ export default function Home() {
             Transform your resume into a beautiful, recruiter-ready timeline
           </p>
         </div>
+
 
         {/* Main Content */}
         <div className="space-y-8">
@@ -242,7 +247,7 @@ export default function Home() {
                     ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 scale-105'
                     : uploadedFile
                       ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                      : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
+                      : 'border-gray-300 dark:border-gray-400 hover:border-gray-400 dark:hover:border-gray-400'
                   }`}
                 onDragOver={(e) => {
                   e.preventDefault();
@@ -329,7 +334,8 @@ export default function Home() {
                     </>
                   ) : (
                     <>
-                      <ArrowUpOnSquareStackIcon className="h-5 w-5" />
+                      <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+                      {/* <ArrowUpOnSquareStackIcon className="h-5 w-5" /> */}
                       <span>Generate Timeline</span>
                     </>
                   )}
