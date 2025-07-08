@@ -24,62 +24,38 @@
   --radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --card: #0a0a0a;
-    --card-foreground: #ededed;
-    --popover: #0a0a0a;
-    --popover-foreground: #ededed;
-    --primary: #ededed;
-    --primary-foreground: #0a0a0a;
-    --secondary: #1a1a1a;
-    --secondary-foreground: #ededed;
-    --muted: #1a1a1a;
-    --muted-foreground: #a1a1aa;
-    --accent: #1a1a1a;
-    --accent-foreground: #ededed;
-    --destructive: #7f1d1d;
-    --destructive-foreground: #ededed;
-    --border: #929292;
-    --input: #1a1a1a;
-    --ring: #d4d4d8;
-  }
+/* Dark theme variables - use .dark class instead of media query */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card: #0a0a0a;
+  --card-foreground: #ededed;
+  --popover: #0a0a0a;
+  --popover-foreground: #ededed;
+  --primary: #ededed;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #ededed;
+  --muted: #1a1a1a;
+  --muted-foreground: #a1a1aa;
+  --accent: #1a1a1a;
+  --accent-foreground: #ededed;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #ededed;
+  --border: #929292;
+  --input: #1a1a1a;
+  --ring: #d4d4d8;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Remove the @theme inline directive and use standard CSS */
 * {
-  border-color: var(--border);
+  border-color: hsl(var(--border));
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
@@ -94,21 +70,21 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--muted);
+  background: hsl(var(--muted));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
+  background: hsl(var(--muted-foreground));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-foreground);
+  background: hsl(var(--accent-foreground));
 }
 
 /* Focus styles for accessibility */
 :focus-visible {
-  outline: 2px solid var(--ring);
+  outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
 }
 
@@ -127,8 +103,8 @@ html {
 .spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid var(--muted);
-  border-top: 2px solid var(--primary);
+  border: 2px solid hsl(var(--muted));
+  border-top: 2px solid hsl(var(--primary));
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -139,7 +115,7 @@ html {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: conic-gradient(var(--primary) 0deg, var(--muted) 90deg, var(--primary) 180deg, var(--muted) 270deg);
+  background: conic-gradient(hsl(var(--primary)) 0deg, hsl(var(--muted)) 90deg, hsl(var(--primary)) 180deg, hsl(var(--muted)) 270deg);
   animation: spin 1s linear infinite;
 }
 
@@ -162,10 +138,8 @@ html {
 }
 
 /* Dark mode adjustments for cards */
-@media (prefers-color-scheme: dark) {
-  .card-hover:hover {
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-  }
+.dark .card-hover:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 /* Button animations */
@@ -192,7 +166,7 @@ html {
 
 /* Timeline specific styles */
 .timeline-dot {
-  box-shadow: 0 0 0 4px var(--background), 0 0 0 8px var(--border);
+  box-shadow: 0 0 0 4px hsl(var(--background)), 0 0 0 8px hsl(var(--border));
 }
 
 /* File upload area animations */
