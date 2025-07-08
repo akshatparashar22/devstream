@@ -15,8 +15,8 @@ export default function ThemeSwitcher() {
 
     if (!mounted) {
         return (
-            <div className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 w-12 h-12 flex items-center justify-center">
-                <div className="w-5 h-5 bg-gray-300 dark:bg-gray-600 rounded animate-pulse"></div>
+            <div className="p-3 rounded-full bg-muted w-12 h-12 flex items-center justify-center">
+                <div className="w-5 h-5 bg-muted-foreground rounded animate-pulse"></div>
             </div>
         );
     }
@@ -26,7 +26,7 @@ export default function ThemeSwitcher() {
     return (
         <button
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
-            className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 ease-in-out shadow-sm hover:shadow-md"
+            className="p-3 rounded-full bg-muted border border-border hover:bg-muted/80 transition-all duration-200 ease-in-out shadow-sm hover:shadow-md"
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         >
             <div className="relative w-5 h-5">
@@ -35,7 +35,7 @@ export default function ThemeSwitcher() {
                         }`}
                 />
                 <MoonIcon
-                    className={`absolute inset-0 w-5 h-5 text-slate-700 dark:text-slate-300 transition-all duration-300 ${isDark ? 'rotate-0 opacity-100 scale-100' : '-rotate-90 opacity-0 scale-0'
+                    className={`absolute inset-0 w-5 h-5 text-foreground transition-all duration-300 ${isDark ? 'rotate-0 opacity-100 scale-100' : '-rotate-90 opacity-0 scale-0'
                         }`}
                 />
             </div>

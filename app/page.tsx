@@ -116,7 +116,7 @@ export default function Home() {
           title: item.year,
           content: (
             <div className="space-y-4">
-              <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700">
+              <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 transition-all duration-300">
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100">
@@ -128,7 +128,7 @@ export default function Home() {
                       </p>
                     )}
                   </div>
-                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${item.type === 'work' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                  <span className={`px-2 py-1 text-xs font-semibold rounded-full transition-all duration-300 ${item.type === 'work' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
                     item.type === 'education' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
                       item.type === 'certification' ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' :
                         'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
@@ -221,7 +221,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground transition-all duration-300">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="text-center mb-12 relative">
@@ -231,7 +231,7 @@ export default function Home() {
           <h1 className={`text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ${sourceCodePro.className}`}>
             DevStream
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
+          <p className="text-lg text-muted-foreground transition-colors duration-300">
             Transform your resume into a beautiful, recruiter-ready timeline
           </p>
         </div>
@@ -239,15 +239,15 @@ export default function Home() {
         {/* Main Content */}
         <div className="space-y-8">
           {!processingState.isComplete && (
-            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
+            <div className="bg-card rounded-2xl shadow-lg border border-border p-8 transition-all duration-300">
               {/* Upload Area */}
               <div
-                className={`w-full border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-all duration-200 cursor-pointer
+                className={`w-full border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300 cursor-pointer
                   ${isDragging
                     ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 scale-105'
                     : uploadedFile
                       ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                      : 'border-gray-300 dark:border-gray-400 hover:border-gray-400 dark:hover:border-gray-400'
+                      : 'border-border hover:border-muted-foreground bg-muted/50 hover:bg-muted/80'
                   }`}
                 onDragOver={(e) => {
                   e.preventDefault();
@@ -258,18 +258,18 @@ export default function Home() {
                 onClick={() => inputRef.current?.click()}
               >
                 {uploadedFile ? (
-                  <CheckCircleIcon className="h-12 w-12 text-green-500 mb-4" />
+                  <CheckCircleIcon className="h-12 w-12 text-green-500 mb-4 transition-colors duration-300" />
                 ) : (
-                  <ArrowUpTrayIcon className="h-12 w-12 text-gray-400 mb-4" />
+                  <ArrowUpTrayIcon className="h-12 w-12 text-muted-foreground mb-4 transition-colors duration-300" />
                 )}
 
                 <div className="space-y-2">
                   {uploadedFile ? (
                     <>
-                      <p className="text-lg font-semibold text-green-700 dark:text-green-400">
+                      <p className="text-lg font-semibold text-green-700 dark:text-green-400 transition-colors duration-300">
                         File Ready!
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground transition-colors duration-300">
                         {uploadedFile.name} ({(uploadedFile.size / 1024 / 1024).toFixed(2)} MB)
                       </p>
                       <button
@@ -277,20 +277,20 @@ export default function Home() {
                           e.stopPropagation();
                           resetUpload();
                         }}
-                        className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                        className="text-sm text-blue-600 dark:text-blue-400 hover:underline transition-colors duration-300"
                       >
                         Change file
                       </button>
                     </>
                   ) : (
                     <>
-                      <p className="text-xl font-semibold text-gray-700 dark:text-gray-300">
+                      <p className="text-xl font-semibold text-foreground transition-colors duration-300">
                         Drop your resume here
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-muted-foreground transition-colors duration-300">
                         or <span className="underline font-medium text-blue-600 dark:text-blue-400">browse</span> to upload
                       </p>
-                      <p className="text-xs text-gray-400">
+                      <p className="text-xs text-muted-foreground transition-colors duration-300">
                         Supports PDF, DOC, DOCX (max 1MB)
                       </p>
                     </>
@@ -308,7 +308,7 @@ export default function Home() {
 
               {/* Error Display */}
               {processingState.error && (
-                <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-start space-x-3">
+                <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-start space-x-3 transition-all duration-300">
                   <ExclamationCircleIcon className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
                   <p className="text-sm text-red-700 dark:text-red-400">{processingState.error}</p>
                 </div>
@@ -320,7 +320,7 @@ export default function Home() {
                   onClick={handleSubmit}
                   disabled={!uploadedFile || processingState.isProcessing}
                   className={`
-                    px-8 py-3 rounded-xl font-semibold text-white transition-all duration-200 flex items-center space-x-2
+                    px-8 py-3 rounded-xl font-semibold text-white transition-all duration-300 flex items-center space-x-2
                     ${uploadedFile && !processingState.isProcessing
                       ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transform hover:scale-105'
                       : 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
@@ -343,18 +343,18 @@ export default function Home() {
 
               {/* Instructions */}
               <div className="mt-8 space-y-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">How it works:</h3>
-                <ol className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">How it works:</h3>
+                <ol className="space-y-2 text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
                   <li className="flex items-start space-x-2">
-                    <span className="flex-shrink-0 w-6 h-6 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-semibold">1</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300">1</span>
                     <span>Upload your latest resume in PDF or Word format</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="flex-shrink-0 w-6 h-6 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-semibold">2</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300">2</span>
                     <span>Our AI analyzes your experience and education chronologically</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <span className="flex-shrink-0 w-6 h-6 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-semibold">3</span>
+                    <span className="flex-shrink-0 w-6 h-6 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300">3</span>
                     <span>Get a beautiful, interactive timeline perfect for portfolios</span>
                   </li>
                 </ol>
@@ -367,46 +367,46 @@ export default function Home() {
             <div className="space-y-8">
               {/* Summary Section */}
               {resumeSummary && (
-                <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800">
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800 transition-all duration-300">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
                     Career Summary
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-3">
                       <div>
-                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Current Role</p>
-                        <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400 transition-colors duration-300">Current Role</p>
+                        <p className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
                           {resumeSummary.currentRole}
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Experience</p>
-                        <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400 transition-colors duration-300">Total Experience</p>
+                        <p className="text-lg font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
                           {resumeSummary.totalExperience}
                         </p>
                       </div>
                     </div>
                     <div className="space-y-3">
                       <div>
-                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Education</p>
-                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400 transition-colors duration-300">Education</p>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 transition-colors duration-300">
                           {resumeSummary.education}
                         </p>
                       </div>
                       {resumeSummary.keySkills && resumeSummary.keySkills.length > 0 && (
                         <div>
-                          <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Key Skills</p>
+                          <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2 transition-colors duration-300">Key Skills</p>
                           <div className="flex flex-wrap gap-2">
                             {resumeSummary.keySkills.slice(0, 8).map((skill, index) => (
                               <span
                                 key={index}
-                                className="px-2 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full"
+                                className="px-2 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full transition-all duration-300"
                               >
                                 {skill}
                               </span>
                             ))}
                             {resumeSummary.keySkills.length > 8 && (
-                              <span className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full">
+                              <span className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full transition-all duration-300">
                                 +{resumeSummary.keySkills.length - 8} more
                               </span>
                             )}
@@ -421,19 +421,19 @@ export default function Home() {
               {/* Timeline */}
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">
                     Your Career Timeline
                   </h2>
                   <div className="flex space-x-2">
                     <button
                       onClick={() => window.print()}
-                      className="px-4 py-2 text-sm bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
+                      className="px-4 py-2 text-sm bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition-all duration-300"
                     >
                       Print Timeline
                     </button>
                     <button
                       onClick={resetUpload}
-                      className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                      className="px-4 py-2 text-sm bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
                     >
                       Upload New Resume
                     </button>
@@ -446,13 +446,13 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <footer className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 dark:text-gray-400">
             <a
               href="https://ui.aceternity.com/components/timeline"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+              className="flex items-center space-x-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300"
             >
               <Image
                 src="/window.svg"
