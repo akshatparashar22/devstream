@@ -1,7 +1,8 @@
 import {
     Geist,
     Geist_Mono,
-    Source_Code_Pro
+    Source_Code_Pro,
+    Lusitana,
 } from "next/font/google";
 
 
@@ -19,3 +20,8 @@ export const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
 });
+
+export const lusitana = Lusitana({
+    subsets: ["latin"],
+    weight: "400"
+})
